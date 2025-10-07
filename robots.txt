@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://codenook.io/sitemap.xml

@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>CodeNook · AI Website Consultancy for Workflow Automation</title>
+  <meta name="description" content="CodeNook helps small businesses and medical offices save time and grow by automating workflows, customer communication, and back-office tasks using n8n and AI-powered tools." />
+  <meta name="keywords" content="workflow automation, AI website consultancy, n8n workflows, small business automation, healthcare automation, back-office automation, CodeNook" />
+
+  <!-- Canonical + robots -->
+  <link rel="canonical" href="https://codenook.io/">
+  <meta name="robots" content="index, follow">
+
+  <!-- Open Graph (Facebook, LinkedIn, etc.) -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="CodeNook · AI Website Consultancy">
+  <meta property="og:description" content="Automate the work behind your website. CodeNook builds smart workflows for small businesses using n8n and AI tools.">
+  <meta property="og:url" content="https://codenook.io/">
+  <meta property="og:image" content="https://codenook.io/assets/logo.png">
+
+  <!-- Favicon -->
+  <link rel="icon" href="assets/logo.png" />
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Calendly widget -->
+  <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+  <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "CodeNook",
+    "url": "https://codenook.io/",
+    "logo": "https://codenook.io/assets/logo.png",
+    "description": "AI website consultancy specializing in workflow automation for small businesses and medical offices using n8n.",
+    "areaServed": "US",
+    "sameAs": [],
+    "contactPoint": [{
+      "@type": "ContactPoint",
+      "contactType": "sales",
+      "email": "hello@codenook.io",
+      "availableLanguage": ["English"]
+    }]
+  }
+  </script>
+  <style>
+    /* subtle animated gradient ring */
+    .ring-animate {
+      background:
+        radial-gradient(transparent 52%, rgba(255,255,255,0.12) 55%, transparent 58%) center/300px 300px no-repeat;
+      animation: pulse 4s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { background-size: 300px 300px; opacity: .9; }
+      50% { background-size: 360px 360px; opacity: 1; }
+    }
+    /* hover zoom */
+    .hover-zoom { transition: transform .35s ease, box-shadow .35s ease, border-color .35s ease; }
+    .hover-zoom:hover { transform: scale(1.03); box-shadow: 0 10px 30px rgba(255,255,255,0.08); }
+
+    /* High-contrast cards */
+    .card{
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.16);
+      border-radius: 1rem;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+      backdrop-filter: blur(4px);
+    }
+    .card:hover{ border-color: rgba(255,255,255,0.25); box-shadow: 0 20px 50px rgba(0,0,0,0.45); }
+
+    /* Accessible focus */
+    .focus-ring:focus-visible{ outline: 2px solid #fff; outline-offset: 2px; border-radius: .75rem; }
+
+    /* soft vignette behind the network */
+    #botNet {
+      filter: drop-shadow(0 0 30px rgba(255,255,255,0.12));
+      border-radius: 9999px; /* looks like a ‘lens’ */
+    }
+  </style>
+</head>
+
+
+<body class="bg-black text-gray-100 selection:bg-white/20 selection:text-white">
+  <!-- Nav -->
+  <header class="sticky top-0 z-40 backdrop-blur bg-black/70 border-b border-white/10">
+    <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <img src="assets/logo.png" alt="CodeNook logo" class="h-9 w-9 rounded-full hover-zoom" />
+        <span class="font-semibold tracking-tight text-lg">CodeNook</span>
+      </div>
+      <nav class="hidden sm:flex items-center gap-6 text-sm">
+        <a href="#services" class="hover:text-white text-gray-300">Services</a>
+        <a href="#process" class="hover:text-white text-gray-300">Process</a>
+        <a href="#work" class="hover:text-white text-gray-300">Workflows</a>
+        <a href="#book" class="hover:text-white text-gray-300">Book</a>
+        <a href="#contact" class="px-3 py-1.5 rounded-lg bg-white text-black font-medium hover:bg-white/90">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="relative overflow-hidden">
+    <div class="absolute inset-0 ring-animate opacity-60 pointer-events-none"></div>
+    <div class="max-w-6xl mx-auto px-6 py-24 sm:py-28 grid md:grid-cols-2 gap-12 items-center">
+      <div>
+        <h1 class="text-4xl sm:text-5xl font-bold leading-tight">
+          Automate the Work Behind Your Website.
+        </h1>
+        <p class="mt-5 text-lg text-gray-300 max-w-xl">
+          CodeNook helps small businesses save time and grow with AI tools that streamline customer communication and workflow.
+        </p>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a href="#book" class="px-5 py-3 rounded-xl bg-white text-black font-semibold hover:bg-white/90 hover-zoom focus-ring">Book a discovery call</a>
+          <a href="#services" class="px-5 py-3 rounded-xl border border-white/20 hover:border-white/40 hover-zoom focus-ring">Explore services</a>
+        </div>
+      </div>
+      <div class="justify-self-center w-full">
+        <canvas id="botNet" class="w-full h-72 sm:h-96 block"></canvas>
+      </div>
+    </div>
+  </section>
+
+  <!-- Social Proof -->
+  <section class="border-t border-white/10 bg-[#0b0b0b]">
+    <div class="max-w-6xl mx-auto px-6 py-12 grid sm:grid-cols-3 gap-6 text-center">
+      <div class="p-6 card hover-zoom">
+        <div class="text-3xl font-bold">💰 30%+</div>
+        <div class="text-sm text-gray-300">Average lead conversion lift</div>
+      </div>
+      <div class="p-6 card hover-zoom">
+        <div class="text-3xl font-bold">💬 3x</div>
+        <div class="text-sm text-gray-300">Client Engagement Rate</div>
+      </div>
+      <div class="p-6 card hover-zoom">
+        <div class="text-3xl font-bold">🕐 12+ hours
+        </div>
+        <div class="text-sm text-gray-300">Save on admin and repetitive tasks</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services (n8n-leaning) -->
+  <section id="services" class="border-t border-white/10">
+    <div class="max-w-6xl mx-auto px-6 py-20">
+      <h2 class="text-3xl font-semibold mb-10">What we build</h2>
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="p-6 card hover-zoom">
+          <h3 class="font-semibold text-lg mb-2">Lead Capture → CRM</h3>
+          <p class="text-gray-300 text-sm">Forms/chat capture enriched with lookups, routed to your CRM with dedupe & alerts via n8n.</p>
+        </div>
+        <div class="p-6 card hover-zoom">
+          <h3 class="font-semibold text-lg mb-2">Scheduling & Follow-ups</h3>
+          <p class="text-gray-300 text-sm">Auto confirmations, reminders, and post-call tasks (docs, quotes, tickets) triggered by events.</p>
+        </div>
+        <div class="p-6 card hover-zoom">
+          <h3 class="font-semibold text-lg mb-2">Back-Office Automations</h3>
+          <p class="text-gray-300 text-sm">Sync data between apps (Sheets, EHR/CRM, email, Slack), generate summaries, and keep records tidy.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process -->
+  <section id="process" class="border-t border-white/10 bg-[#0b0b0b]">
+    <div class="max-w-6xl mx-auto px-6 py-20">
+      <h2 class="text-3xl font-semibold mb-10">Our process</h2>
+      <ol class="grid md:grid-cols-4 gap-6 list-decimal list-inside">
+        <li class="p-6 card hover-zoom">
+          <h4 class="font-medium mb-1">Discover</h4>
+          <p class="text-sm text-gray-300">30–45 min call to map goals, workflows, and systems.</p>
+        </li>
+        <li class="p-6 card hover-zoom">
+          <h4 class="font-medium mb-1">Design</h4>
+          <p class="text-sm text-gray-300">We propose flows, integrations, and KPIs with a fixed quote.</p>
+        </li>
+        <li class="p-6 card hover-zoom">
+          <h4 class="font-medium mb-1">Build</h4>
+          <p class="text-sm text-gray-300">Implement, test, and iterate quickly with weekly check-ins.</p>
+        </li>
+        <li class="p-6 card hover-zoom">
+          <h4 class="font-medium mb-1">Launch</h4>
+          <p class="text-sm text-gray-300">Deploy and measure impact.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- Example outcomes + Sample workflows (coming soon) -->
+  <section id="work" class="border-t border-white/10">
+    <div class="max-w-6xl mx-auto px-6 py-20">
+      <h2 class="text-3xl font-semibold mb-3">Example outcomes & sample workflows</h2>
+      <p class="text-sm text-gray-400 mb-10">
+        Sample workflow library
+        <span class="inline-block px-2 py-0.5 rounded bg-white/10 text-gray-200">coming soon</span>.
+      </p>
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="p-6 card hover-zoom">
+          <div class="text-sm text-gray-400 mb-2">Lead Routing</div>
+          <p class="text-gray-200 text-sm">Smart lead capture and routing with automatic follow-ups. +41% lead-to-opportunity rate.</p>
+        </div>
+        <div class="p-6 card hover-zoom">
+          <div class="text-sm text-gray-400 mb-2">Healthcare Intake</div>
+          <p class="text-gray-200 text-sm">Automated patient triage and appointment scheduling. −55% admin time/week.</p>
+        </div>
+        <div class="p-6 card hover-zoom">
+          <div class="text-sm text-gray-400 mb-2">E-commerce Support</div>
+          <p class="text-gray-200 text-sm">Intelligent customer support with instant order updates. +28% CSAT, −47% human tickets.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Book a call (Calendly popup only) -->
+  <section id="book" class="border-t border-white/10 bg-[#0b0b0b]">
+    <div class="max-w-6xl mx-auto px-6 py-20">
+      <div class="text-center">
+        <h2 class="text-3xl font-semibold mb-6">Book a discovery call</h2>
+        <p class="text-gray-300 mb-6">Pick a time that works for you. We'll discuss goals and the quickest wins.</p>
+        <div class="max-w-xl mx-auto">
+          <div class="p-6 card hover-zoom">
+            <div class="space-y-3 text-sm text-gray-300">
+              <p>• 30 minutes on Zoom or phone</p>
+              <p>• We map your current workflow and tools</p>
+              <p>• Clear next steps & fixed-price quote</p>
+            </div>
+            <button onclick="Calendly.initPopupWidget({url: 'https://calendly.com/travis-codenook/30min'});return false;"
+                    class="mt-6 rounded-xl px-5 py-3 bg-white text-black font-semibold hover:bg-white/90 w-full focus-ring">
+              Open scheduler
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer (Contact form only) -->
+  <footer id="contact" class="border-t border-white/10">
+    <div class="max-w-6xl mx-auto px-6 py-16">
+      <h2 class="text-2xl font-semibold mb-6">Get in touch</h2>
+      <form id="contactForm" class="grid gap-4 p-6 card hover-zoom">
+        <div class="grid sm:grid-cols-2 gap-4">
+          <label class="block">
+            <span class="text-sm">Name</span>
+            <input name="name" type="text" required class="mt-1 w-full rounded-lg border border-white/10 bg-black/40 p-3" />
+          </label>
+          <label class="block">
+            <span class="text-sm">Email</span>
+            <input name="email" type="email" required class="mt-1 w-full rounded-lg border border-white/10 bg-black/40 p-3" />
+          </label>
+        </div>
+        <label class="block">
+          <span class="text-sm">Company / Website</span>
+          <input name="company" type="text" class="mt-1 w-full rounded-lg border border-white/10 bg-black/40 p-3" />
+        </label>
+        <label class="block">
+          <span class="text-sm">How can we help?</span>
+          <textarea name="message" rows="5" required class="mt-1 w-full rounded-lg border border-white/10 bg-black/40 p-3"></textarea>
+        </label>
+
+        <!-- Honeypot -->
+        <input type="text" name="_gotcha" class="hidden" autocomplete="off" />
+
+        <button type="submit" class="rounded-xl px-5 py-3 bg-white text-black font-semibold hover:bg-white/90 focus-ring">Send</button>
+        <p id="formStatus" class="text-sm text-gray-300"></p>
+      </form>
+    </div>
+
+    <div class="border-t border-white/10">
+      <div class="max-w-6xl mx-auto px-6 py-8 text-sm text-gray-400 flex flex-col sm:flex-row justify-between gap-3">
+        <div>© <span id="y"></span> CodeNook. All rights reserved.</div>
+        <div class="space-x-4">
+          <a href="#book" class="hover:text-gray-200">Book a call</a>
+          <a href="#contact" class="hover:text-gray-200">Contact</a>
+          <a href="#" class="hover:text-gray-200">Privacy</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    // --- Formspree static submit ---
+    const FORMSPREE_ID = "xblzkpdl"; // replace with your own if needed
+    const form = document.getElementById('contactForm');
+    const statusEl = document.getElementById('formStatus');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      statusEl.textContent = 'Sending...';
+
+      const data = new FormData(form);
+      try {
+        const res = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
+          method: 'POST',
+          body: data,
+          headers: { 'Accept': 'application/json' }
+        });
+        if (res.ok) {
+          form.reset();
+          statusEl.textContent = `Thanks! We'll get back to you shortly.`;
+        } else {
+          const err = await res.json().catch(() => ({}));
+          statusEl.textContent = (err.errors && err.errors[0] && err.errors[0].message) || 'Something went wrong. Please try again.';
+        }
+      } catch (err) {
+        statusEl.textContent = 'Network error. Please try again.';
+      }
+    });
+
+    // --- AI Bots Animation ---
+    (function(){
+      const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const c = document.getElementById('botNet');
+      if(!c) return;
+      const ctx = c.getContext('2d');
+
+      let dpr = Math.max(1, Math.min(2, window.devicePixelRatio || 1));
+      let W=0, H=0, bots=[], maxR=3.2, count=30, linkDist=60;
+      let time = 0;
+      let mouseX = 0, mouseY = 0;
+      let allConnected = false;
+      let morphing = false;
+      let morphComplete = false;
+      let morphStartTime = 0;
+
+      function resize(){
+        const rect = c.getBoundingClientRect();
+        W = Math.floor(rect.width * dpr);
+        H = Math.floor(rect.height * dpr);
+        c.width = W; 
+        c.height = H;
+        ctx.setTransform(dpr,0,0,dpr,0,0);
+      }
+
+      function rand(a,b){ return a + Math.random()*(b-a); }
+
+      function init(){
+        bots = [];
+        allConnected = false;
+        morphing = false;
+        morphComplete = false;
+        morphStartTime = 0;
+        
+        // Create random floating nodes
+        for(let i = 0; i < count; i++){
+          bots.push({
+            x: rand(50, W/dpr - 50),
+            y: rand(50, H/dpr - 50),
+            vx: rand(-0.3, 0.3),
+            vy: rand(-0.3, 0.3),
+            r: rand(2.0, maxR),
+            robot: Math.random() < 0.15,
+            pulsePhase: Math.random() * Math.PI * 2,
+            connected: false,
+            targetX: null,
+            targetY: null
+          });
+        }
+      }
+
+      function startMorph(){
+        const centerX = W/(2*dpr);
+        const centerY = H/(2*dpr);
+        const hexSize = 60;
+        
+        // Honeycomb hexagon positions
+        const hexPositions = [
+          // Center hexagon (6 nodes)
+          ...Array(6).fill().map((_, i) => {
+            const angle = (i / 6) * Math.PI * 2;
+            return {
+              x: centerX + Math.cos(angle) * hexSize,
+              y: centerY + Math.sin(angle) * hexSize
+            };
+          }),
+          
+          // Outer ring (12 nodes)
+          ...Array(12).fill().map((_, i) => {
+            const angle = (i / 12) * Math.PI * 2;
+            return {
+              x: centerX + Math.cos(angle) * hexSize * 2,
+              y: centerY + Math.sin(angle) * hexSize * 2
+            };
+          }),
+          
+          // Inner ring (6 nodes)
+          ...Array(6).fill().map((_, i) => {
+            const angle = (i / 6) * Math.PI * 2 + Math.PI / 6;
+            return {
+              x: centerX + Math.cos(angle) * hexSize * 0.6,
+              y: centerY + Math.sin(angle) * hexSize * 0.6
+            };
+          }),
+          
+          // Additional nodes for honeycomb pattern (6 nodes)
+          ...Array(6).fill().map((_, i) => {
+            const angle = (i / 6) * Math.PI * 2;
+            return {
+              x: centerX + Math.cos(angle) * hexSize * 1.5,
+              y: centerY + Math.sin(angle) * hexSize * 1.5
+            };
+          })
+        ];
+        
+        // Assign hexagon positions
+        for(let i = 0; i < bots.length && i < hexPositions.length; i++){
+          bots[i].targetX = hexPositions[i].x;
+          bots[i].targetY = hexPositions[i].y;
+        }
+        
+        // Create proper honeycomb connections - only connect adjacent nodes
+        // Reset all connections first
+        for(let i = 0; i < bots.length; i++){
+          bots[i].connected = false;
+        }
+        
+        // Connect nodes in proper honeycomb pattern
+        for(let i = 0; i < hexPositions.length && i < bots.length; i++){
+          for(let j = i + 1; j < hexPositions.length && j < bots.length; j++){
+            const dx = hexPositions[i].x - hexPositions[j].x;
+            const dy = hexPositions[i].y - hexPositions[j].y;
+            const dist = Math.hypot(dx, dy);
+            
+            // Connect if nodes are adjacent in the honeycomb structure
+            if(dist < hexSize * 1.2) { // Adjacent nodes in honeycomb
+              bots[i].connected = true;
+              bots[j].connected = true;
+            }
+          }
+        }
+        
+        morphing = true;
+        morphStartTime = time;
+      }
+
+      function step(){
+        time += 0.016; // ~60fps
+        ctx.clearRect(0,0,W/dpr,H/dpr);
+
+        // 1. FLOATING PHYSICS
+        for(const bot of bots){
+          if(!prefersReduced && !morphing){
+            // Random drift
+            bot.x += bot.vx;
+            bot.y += bot.vy;
+            
+            // Soft attraction to cursor
+            const mouseDist = Math.hypot(bot.x - mouseX/dpr, bot.y - mouseY/dpr);
+            if(mouseDist < 100){
+              const attraction = 0.02 * (1 - mouseDist/100);
+              bot.vx += (mouseX/dpr - bot.x) * attraction;
+              bot.vy += (mouseY/dpr - bot.y) * attraction;
+            }
+            
+            // Bounce off edges
+            if(bot.x < 30 || bot.x > W/dpr - 30) bot.vx *= -0.8;
+            if(bot.y < 30 || bot.y > H/dpr - 30) bot.vy *= -0.8;
+            
+            // Keep in bounds
+            bot.x = Math.max(30, Math.min(W/dpr - 30, bot.x));
+            bot.y = Math.max(30, Math.min(H/dpr - 30, bot.y));
+            
+            // Add slight random drift
+            bot.vx += (Math.random() - 0.5) * 0.01;
+            bot.vy += (Math.random() - 0.5) * 0.01;
+            
+            // Dampen velocity
+            bot.vx *= 0.99;
+            bot.vy *= 0.99;
+          }
+        }
+
+        // 2. CONNECTION LOGIC
+        for(let i=0;i<bots.length;i++){
+          for(let j=i+1;j<bots.length;j++){
+            const a=bots[i], b=bots[j];
+            const dx=a.x-b.x, dy=a.y-b.y, dist=Math.hypot(dx,dy);
+            
+            // Check if should connect (during floating) or if already connected (persistent)
+            if(dist < linkDist/dpr || (a.connected && b.connected)){
+              // Mark as connected (persistent)
+              a.connected = true;
+              b.connected = true;
+              
+              // Draw green link
+              const alpha = 0.4 + (1 - dist/(linkDist/dpr)) * 0.4;
+              ctx.strokeStyle = `rgba(0,255,100,${alpha})`;
+              ctx.lineWidth = 2;
+              ctx.beginPath(); 
+              ctx.moveTo(a.x,a.y); 
+              ctx.lineTo(b.x,b.y); 
+              ctx.stroke();
+            }
+          }
+        }
+
+        // 3. CHECK IF ALL CONNECTED
+        if(!allConnected && !morphing){
+          allConnected = bots.every(bot => bot.connected);
+          if(allConnected){
+            startMorph();
+          }
+        }
+
+        // 4. MORPHING TO ROBOT FACE
+        if(morphing){
+          let allReachedTarget = true;
+          
+          for(const bot of bots){
+            if(bot.targetX !== null && bot.targetY !== null){
+              // Move towards target
+              const dx = bot.targetX - bot.x;
+              const dy = bot.targetY - bot.y;
+              const dist = Math.hypot(dx, dy);
+              
+              if(dist > 2){
+                bot.x += dx * 0.08;
+                bot.y += dy * 0.08;
+                allReachedTarget = false;
+              } else {
+                bot.x = bot.targetX;
+                bot.y = bot.targetY;
+              }
+            }
+          }
+          
+          if(allReachedTarget && !morphComplete){
+            morphComplete = true;
+            // Disband after 3 seconds
+            setTimeout(() => {
+              init();
+            }, 3000);
+          }
+        }
+
+        // 5. DRAW NODES
+        for(const bot of bots){
+          const pulse = morphComplete ? 1 + 0.05 * Math.sin(time * 4 + bot.pulsePhase) : 1;
+          const rr = bot.r * pulse;
+          
+          // Color based on state
+          let nodeColor;
+          if(morphing || morphComplete){
+            nodeColor = 'rgba(0,255,100,0.8)'; // Green when morphing
+          } else if(bot.connected){
+            nodeColor = 'rgba(0,255,100,0.7)'; // Green when connected
+          } else {
+            nodeColor = 'rgba(255,255,255,0.7)'; // White when floating
+          }
+
+          // Draw node
+          ctx.beginPath();
+          ctx.fillStyle = nodeColor;
+          ctx.arc(bot.x, bot.y, rr, 0, Math.PI*2);
+          ctx.fill();
+
+          // Robot emoji for some bots
+          if(bot.robot){
+            ctx.font = '10px system-ui, -apple-system, Segoe UI, Roboto';
+            ctx.fillStyle = 'rgba(255,255,255,0.9)';
+            ctx.fillText('🤖', bot.x-5, bot.y+3);
+          }
+        }
+
+        if(!prefersReduced) requestAnimationFrame(step);
+      }
+
+      function start(){
+        resize(); 
+        init(); 
+        
+        // Track mouse position
+        c.addEventListener('mousemove', (e) => {
+          const rect = c.getBoundingClientRect();
+          mouseX = (e.clientX - rect.left) * dpr;
+          mouseY = (e.clientY - rect.top) * dpr;
+        });
+        
+        step();
+      }
+
+      // responsive
+      let ro;
+      if('ResizeObserver' in window){
+        ro = new ResizeObserver(()=>{ resize(); init(); });
+        ro.observe(c);
+      } else {
+        window.addEventListener('resize', ()=>{ resize(); init(); });
+      }
+      start();
+    })();
+  </script>
+</body>
+</html>
