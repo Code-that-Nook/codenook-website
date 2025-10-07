@@ -21,12 +21,6 @@ A single‑page static site with a contact form that posts to **Formspree** (no 
 - **Analytics:** You can drop any analytics script into `<head>`.
 - **Alt contact methods:** If you prefer EmailJS or Netlify Forms, swap the form section accordingly.
 
-## Local preview
-Just open `index.html` in a browser, or use a simple static server:
-```bash
-python3 -m http.server 5173
-# then visit http://localhost:5173
-```
 
 ## Notes
 - Form has a hidden honeypot field to mitigate spam.
