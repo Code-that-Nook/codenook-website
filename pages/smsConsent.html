@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SMS Consent | CodeNook</title>
+    <meta name="robots" content="index, follow" />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Favicon -->
+    <link rel="icon" href="../assets/logo.png" />
+
+    <style>
+      body {
+        font-family: 'Inter', sans-serif;
+        background-color: #0e0e10;
+        color: #f9fafb;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+    </style>
+  </head>
+  <body class="bg-[#0e0e10] text-white">
+
+    <!-- Header -->
+    <header class="sticky top-0 z-40 backdrop-blur bg-black/70 border-b border-white/10">
+      <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+        <a href="../index.html" class="flex items-center gap-2 text-white hover:text-gray-300 transition-colors">
+          <span class="text-lg">←</span>
+          <span class="font-semibold">Back to Main</span>
+        </a>
+        <nav class="hidden sm:flex items-center gap-6 text-sm">
+          <a href="#content" class="hover:text-white text-gray-300 transition-colors">Consent</a>
+        </nav>
+        <nav class="sm:hidden">
+          <select onchange="window.location.hash = this.value" class="bg-black/50 border border-white/20 text-white text-sm px-3 py-1.5 rounded">
+            <option value="#content">Consent</option>
+          </select>
+        </nav>
+      </div>
+    </header>
+
+    <main id="content" class="py-16 px-6">
+      <div class="max-w-3xl mx-auto">
+        <h1 class="text-3xl sm:text-4xl font-bold mb-4">SMS Messaging Consent</h1>
+        <p class="text-gray-300 text-lg leading-relaxed mb-8">
+          By providing your phone number and interacting with CodeNook, you consent to receive
+          SMS messages from CodeNook related to our services.
+        </p>
+
+        <div class="bg-gradient-to-br from-white/5 to-white/[0.02] border border-white/10 rounded-xl p-6">
+          <p class="font-semibold text-white mb-4 flex items-center gap-2">
+            <span class="w-1 h-5 bg-teal-400 rounded"></span>
+            Message types may include:
+          </p>
+          <ul class="list-disc pl-6 space-y-2 text-gray-300">
+            <li>Automation demos and walkthroughs</li>
+            <li>Appointment confirmations and reminders</li>
+            <li>Service updates and follow-ups</li>
+            <li>Transactional and informational messages</li>
+          </ul>
+
+          <div class="mt-6 space-y-4 text-gray-300">
+            <p>Message frequency may vary. Message and data rates may apply.</p>
+            <p>
+              You may opt out at any time by replying <strong class="text-white">STOP</strong>.
+              For assistance, reply <strong class="text-white">HELP</strong>.
+            </p>
+            <p>Consent is not a condition of purchase.</p>
+          </div>
+        </div>
+
+        <div class="mt-10 text-sm text-gray-400">
+          <p><span class="text-teal-400 font-semibold">Company:</span> CodeNook</p>
+          <p><span class="text-teal-400 font-semibold">Contact:</span> support@codenook.ai</p>
+        </div>
+      </div>
+    </main>
+
+  </body>
+</html>
