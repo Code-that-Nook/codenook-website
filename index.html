@@ -3,9 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>CodeNook · AI Consultancy & Workflow Automation</title>
-  <meta name="description" content="CodeNook helps small businesses and medical offices save time and grow by automating workflows, customer communication, and back-office tasks using workflow automation and AI-powered tools." />
-  <meta name="keywords" content="AI workflow automation, website automation services, small business automation, medical office automation, healthcare workflow consultant, n8n experts, Zapier automation setup, AI chatbot for websites, no-code integration, CRM automation, appointment scheduling automation, intake form automation, CodeNook AI, business process automation, AI automation agency, automate Google Sheets, automate Calendly, automate HubSpot, clinic automation tools, small business AI assistant, software engineer, software development, cheaper automation, automation" />
+    <title>AI Workflow Automation for Small Businesses | CodeNook</title>
+  <meta name="description" content="AI workflow automation for small businesses. We build SMS, intake, and back-office automations using automation and AI tools to save 10+ hours per month. Book a demo." />
 
   <!-- Canonical + robots -->
   <link rel="canonical" href="https://codenook.io/">
@@ -13,8 +12,8 @@
 
   <!-- Open Graph (Facebook, LinkedIn, etc.) -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="CodeNook · AI Workflow Consultancy">
-  <meta property="og:description" content="Automate the work behind your website. CodeNook builds smart workflows for small businesses using workflow automation and AI tools.">
+  <meta property="og:title" content="AI Workflow Automation for Small Businesses | CodeNook">
+  <meta property="og:description" content="Custom SMS, intake, and back-office automations built with AI. Save time, reduce manual work, and scale your business." />
   <meta property="og:url" content="https://codenook.io/">
   <meta property="og:image" content="https://codenook.io/assets/logo.png">
 
@@ -36,15 +35,22 @@
     "name": "CodeNook",
     "url": "https://codenook.io/",
     "logo": "https://codenook.io/assets/logo.png",
-    "description": "AI website consultancy specializing in workflow automation for small businesses and medical offices using automation and ai tools.",
-    "areaServed": "US",
-    "sameAs": [],
-    "contactPoint": [{
+    "description": "AI workflow automation for small businesses. CodeNook builds SMS, intake, and back-office automations using n8n and AI tools.",
+    "areaServed": {
+      "@type": "Country",
+      "name": "United States"
+    },
+    "serviceType": [
+      "AI Workflow Automation",
+      "SMS Automation",
+      "Lead Intake Automation",
+      "Business Process Automation"
+    ],
+    "contactPoint": {
       "@type": "ContactPoint",
       "contactType": "sales",
-      "email": "travis@codenook.io",
-      "availableLanguage": ["English"]
-    }]
+      "email": "travis@codenook.io"
+    }
   }
   </script>
   <style>
@@ -78,7 +84,19 @@
     /* soft vignette behind the network */
     #botNet {
       filter: drop-shadow(0 0 30px rgba(255,255,255,0.12));
-      border-radius: 9999px; /* looks like a ‘lens’ */
+      border-radius: 9999px; /* looks like a 'lens' */
+    }
+    /* Screen reader only */
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border-width: 0;
     }
   </style>
 </head>
@@ -92,7 +110,7 @@
         <img src="assets/logo.png" alt="CodeNook logo" class="h-9 w-9 rounded-full hover-zoom" />
         <span class="font-semibold tracking-tight text-lg">CodeNook</span>
       </div>
-      <nav class="hidden sm:flex items-center gap-6 text-sm">
+      <nav class="hidden sm:flex items-center gap-6 text-sm" role="navigation">
         <a href="#services" class="hover:text-white text-gray-300">Services</a>
         <a href="#process" class="hover:text-white text-gray-300">Process</a>
         <a href="#work" class="hover:text-white text-gray-300">Workflows</a>
@@ -103,15 +121,16 @@
   </header>
 
   <!-- Hero -->
+  <main role="main">
   <section class="relative overflow-hidden">
     <div class="absolute inset-0 ring-animate opacity-60 pointer-events-none"></div>
     <div class="max-w-6xl mx-auto px-6 py-24 sm:py-28 grid md:grid-cols-2 gap-12 items-center">
       <div>
         <h1 class="text-4xl sm:text-5xl font-bold leading-tight">
-          Automate the Work Behind Your Business.
+          AI Workflow Automation for Small Businesses
         </h1>
         <p class="mt-5 text-lg text-gray-300 max-w-xl">
-          CodeNook helps small businesses save time and grow with AI tools that streamline customer communication and workflow.
+          We design and build SMS, intake, and back-office automations using automation and AI tools to eliminate manual work and scale operations.
         </p>
         <div class="mt-8 flex flex-wrap gap-3">
           <a href="#book" class="px-5 py-3 rounded-xl bg-white text-black font-semibold hover:bg-white/90 hover-zoom focus-ring">Book a discovery call</a>
@@ -125,7 +144,8 @@
   </section>
 
   <!-- Social Proof -->
-  <section class="border-t border-white/10 bg-[#0b0b0b]">
+  <section class="border-t border-white/10 bg-[#0b0b0b]" aria-labelledby="social-proof-heading">
+    <h2 id="social-proof-heading" class="sr-only">Social Proof</h2>
     <div class="max-w-6xl mx-auto px-6 py-12 grid sm:grid-cols-3 gap-6 text-center">
       <div class="p-6 card hover-zoom">
         <div class="text-3xl font-bold">💰 30%+</div>
@@ -144,9 +164,9 @@
   </section>
 
   <!-- Services (Trust-focused) -->
-  <section id="services" class="border-t border-white/10">
+  <section id="services" class="border-t border-white/10" aria-labelledby="services-heading">
     <div class="max-w-6xl mx-auto px-6 py-20">
-      <h2 class="text-3xl font-semibold mb-4">
+      <h2 id="services-heading" class="text-3xl font-semibold mb-4">
         Automation is powerful — and <span class="border-b-2 border-teal-400">easy to get wrong</span>
       </h2>
       <p class="text-gray-300 text-lg mb-10 max-w-3xl">
@@ -181,9 +201,9 @@
   </section>
 
   <!-- Process -->
-  <section id="process" class="border-t border-white/10 bg-[#0b0b0b]">
+  <section id="process" class="border-t border-white/10 bg-[#0b0b0b]" aria-labelledby="process-heading">
     <div class="max-w-6xl mx-auto px-6 py-20">
-      <h2 class="text-3xl font-semibold mb-10">Our process</h2>
+      <h2 id="process-heading" class="text-3xl font-semibold mb-10">Our process</h2>
       <div class="flex flex-col md:flex-row items-stretch md:items-center justify-center gap-4 md:gap-2">
         <div class="p-6 card hover-zoom w-full md:w-[250px] md:h-[140px] flex flex-col">
           <h4 class="font-medium mb-1 text-teal-400">Discover</h4>
@@ -209,9 +229,9 @@
   </section>
 
   <!-- What we've built -->
-  <section id="work" class="border-t border-white/10">
+  <section id="work" class="border-t border-white/10" aria-labelledby="work-heading">
     <div class="max-w-6xl mx-auto px-6 py-20">
-      <h2 class="text-3xl font-semibold mb-10">What we've built</h2>
+      <h2 id="work-heading" class="text-3xl font-semibold mb-10">What we've built</h2>
       <div class="grid md:grid-cols-3 gap-6">
         <a href="pages/receipt.html" class="p-6 card hover-zoom block">
           <div class="text-sm text-gray-400 mb-2">Receipt Automation</div>
@@ -233,10 +253,10 @@
   </section>
 
   <!-- Book a call (Calendly popup only) -->
-  <section id="book" class="border-t border-white/10 bg-[#0b0b0b]">
+  <section id="book" class="border-t border-white/10 bg-[#0b0b0b]" aria-labelledby="book-heading">
     <div class="max-w-6xl mx-auto px-6 py-20">
       <div class="text-center">
-        <h2 class="text-3xl font-semibold mb-6">Book a discovery call</h2>
+        <h2 id="book-heading" class="text-3xl font-semibold mb-6">Book a discovery call</h2>
         <p class="text-gray-300 mb-6">Pick a time that works for you. We'll discuss goals and the quickest wins.</p>
         <div class="max-w-xl mx-auto">
           <div class="p-6 card hover-zoom">
@@ -254,11 +274,12 @@
       </div>
     </div>
   </section>
+  </main>
 
   <!-- Footer (Contact form only) -->
-  <footer id="contact" class="border-t border-white/10">
+  <footer id="contact" class="border-t border-white/10" role="contentinfo" aria-labelledby="contact-heading">
     <div class="max-w-6xl mx-auto px-6 py-16">
-      <h2 class="text-2xl font-semibold mb-6"> Don't be shy! Say hi! 👋</h2>
+      <h2 id="contact-heading" class="text-2xl font-semibold mb-6"> Don't be shy! Say hi! 👋</h2>
       <form id="contactForm" class="grid gap-4 p-6 card hover-zoom">
         <div class="grid sm:grid-cols-2 gap-4">
           <label class="block">
@@ -289,6 +310,9 @@
 
     <div class="border-t border-white/10">
       <div class="max-w-6xl mx-auto px-6 py-8 text-sm text-gray-400 flex flex-col sm:flex-row justify-between gap-3">
+        <p class="text-gray-400 max-w-xl">
+          CodeNook provides AI workflow automation services for small businesses across the United States.
+        </p>
         <div>© <span id="y"></span> CodeNook. All rights reserved.</div>
         <div class="space-x-4">
           <a href="#book" class="hover:text-gray-200">Book a call</a>
