@@ -301,12 +301,21 @@
           </label>
         </div>
         <label class="block">
+          <span class="text-sm">Phone Number</span>
+          <input name="phone" type="tel" class="mt-1 w-full rounded-lg border border-white/10 bg-black/40 p-3" />
+        </label>
+        <label class="block">
           <span class="text-sm">Company / Website</span>
           <input name="company" type="text" class="mt-1 w-full rounded-lg border border-white/10 bg-black/40 p-3" />
         </label>
         <label class="block">
           <span class="text-sm">How can we help?</span>
           <textarea name="message" rows="5" required class="mt-1 w-full rounded-lg border border-white/10 bg-black/40 p-3"></textarea>
+        </label>
+
+        <label class="flex items-start gap-2">
+          <input type="checkbox" name="sms_consent" required class="mt-1 rounded border-white/10 bg-black/40" />
+          <span class="text-sm text-gray-300">I agree to receive messages from CodeNook SMS</span>
         </label>
 
         <!-- Honeypot -->
@@ -327,6 +336,7 @@
           <a href="#book" class="hover:text-gray-200">Book a call</a>
           <a href="#contact" class="hover:text-gray-200">Contact</a>
           <a href="#" class="hover:text-gray-200">Privacy</a>
+          <a href="pages/smsConsent.html" class="hover:text-gray-200">See our disclosure</a>
         </div>
       </div>
     </div>
