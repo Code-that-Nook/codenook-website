@@ -90,6 +90,47 @@
     /* Accessible focus */
     .focus-ring:focus-visible{ outline: 2px solid #fff; outline-offset: 2px; border-radius: .75rem; }
 
+    /* OpenHouseIQ card hover effect */
+    .openhouseiq-card {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    .openhouseiq-card .logo-container {
+      transition: opacity 0.4s ease, transform 0.4s ease;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      line-height: 0;
+    }
+    .openhouseiq-card .logo-container img {
+      height: 9rem;
+      width: 12rem;
+    }
+    .openhouseiq-card .content-container {
+      opacity: 0;
+      transform: translate(-50%, -50%) translateY(10px);
+      transition: opacity 0.4s ease, transform 0.4s ease;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: calc(100% - 3rem);
+      text-align: left;
+    }
+    .openhouseiq-card:hover .logo-container,
+    .openhouseiq-card:focus-within .logo-container {
+      opacity: 0;
+      transform: translate(-50%, -50%) translateY(-10px);
+    }
+    .openhouseiq-card:hover .content-container,
+    .openhouseiq-card:focus-within .content-container {
+      opacity: 1;
+      transform: translate(-50%, -50%) translateY(0);
+    }
+
     /* soft vignette behind the network */
     #botNet {
       filter: drop-shadow(0 0 30px rgba(255,255,255,0.12));
@@ -252,10 +293,14 @@
           <h3 class="font-semibold text-lg mb-2 text-teal-400">Never miss another booking</h3>
           <p class="text-gray-200 text-sm">An AI scheduler that responds instantly, qualifies leads, and books meetings automatically — 24/7.</p>
         </a>
-        <a href="pages/intentAutomation.html" class="p-6 card hover-zoom block">
-          <div class="text-sm text-gray-400 mb-2">Buyer Intent Detection</div>
-          <h3 class="font-semibold text-lg mb-2 text-teal-400">Stop chasing dead leads</h3>
-          <p class="text-gray-200 text-sm">Automatically identify serious buyers and know exactly who to follow up with that will provide you with the highest ROI</p>
+        <a href="pages/openHouseiq.html" class="p-6 card hover-zoom block openhouseiq-card">
+          <div class="logo-container">
+            <img src="assets/openhouseiq-logo.png" alt="OpenHouseIQ logo" />
+          </div>
+          <div class="content-container">
+            <h3 class="font-semibold text-lg mb-2 text-teal-400">QR Sign-In + Automated SMS Follow-Up</h3>
+            <p class="text-gray-200 text-sm">Replace paper sign-in sheets with a QR flow, send branded follow-ups automatically, and track delivery verification in one dashboard.</p>
+          </div>
         </a>
       </div>
     </div>
