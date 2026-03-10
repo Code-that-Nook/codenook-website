@@ -109,13 +109,35 @@
       ]
     }
     </script>
+
+    <!-- VideoObject schema for OpenHouseIQ demo -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "VideoObject",
+      "name": "OpenHouseIQ Demo | QR Sign-In and Automated SMS Follow-Up",
+      "description": "See how OpenHouseIQ helps real estate agents replace paper sign-in sheets with QR lead capture, automated SMS follow-up, flyer links, and delivery verification.",
+      "thumbnailUrl": "https://img.youtube.com/vi/8P22CMESvwA/hqdefault.jpg",
+      "uploadDate": "2026-03-10",
+      "embedUrl": "https://www.youtube.com/embed/8P22CMESvwA",
+      "contentUrl": "https://www.youtube.com/watch?v=8P22CMESvwA",
+      "publisher": {
+        "@type": "Organization",
+        "name": "CodeNook",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://codenook.io/assets/logo.png"
+        }
+      }
+    }
+    </script>
   </head>
 
   <body class="text-white">
     <!-- Header -->
     <header class="sticky top-0 z-40 backdrop-blur bg-black/70 border-b border-white/10">
       <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-        <a href="../index.html" class="flex items-center gap-2 text-white hover:text-gray-300 transition-colors">
+        <a href="/" class="flex items-center gap-2 text-white hover:text-gray-300 transition-colors">
           <span class="text-lg">←</span>
           <span class="font-semibold">Back to Main</span>
         </a>
@@ -123,6 +145,7 @@
         <nav class="hidden sm:flex items-center gap-6 text-sm">
           <a href="#hero" class="hover:text-white text-gray-300 transition-colors">Home</a>
           <a href="#features" class="hover:text-white text-gray-300 transition-colors">Features</a>
+          <a href="#demo-video" class="hover:text-white text-gray-300 transition-colors">Demo</a>
           <a href="#how-it-works" class="hover:text-white text-gray-300 transition-colors">How It Works</a>
           <a href="#cta" class="hover:text-white text-gray-300 transition-colors">Get Started</a>
 
@@ -151,6 +174,7 @@
           <select onchange="window.location.hash = this.value" class="bg-black/50 border border-white/20 text-white text-sm px-3 py-1.5 rounded">
             <option value="#hero">Home</option>
             <option value="#features">Features</option>
+            <option value="#demo-video">Demo</option>
             <option value="#how-it-works">How It Works</option>
             <option value="#cta">Get Started</option>
           </select>
@@ -239,6 +263,29 @@
               </div>
             </div>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Demo Video -->
+    <section id="demo-video" aria-labelledby="demo-video-heading" class="py-20 px-6 bg-transparent border-t border-white/5">
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-10">
+          <h2 id="demo-video-heading" class="text-2xl sm:text-3xl font-bold mb-4">See OpenHouseIQ in action</h2>
+          <p class="text-gray-300 text-lg max-w-2xl mx-auto leading-relaxed">
+            Create a sign-in form, share the QR code at your open house, capture leads instantly, and send a branded SMS follow-up with your flyer—all automatically. See how it works in under two minutes.
+          </p>
+        </div>
+        <div class="aspect-video w-full max-w-4xl mx-auto rounded-xl overflow-hidden border border-white/10 bg-black/30 shadow-2xl">
+          <iframe
+            class="w-full h-full"
+            src="https://www.youtube-nocookie.com/embed/8P22CMESvwA?rel=0"
+            title="OpenHouseIQ Demo"
+            loading="lazy"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen>
+          </iframe>
         </div>
       </div>
     </section>
